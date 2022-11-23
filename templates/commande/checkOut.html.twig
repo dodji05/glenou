@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('front/css/checkout.css') }}">
+
+
+{% endblock %}
+{% block body %}
+    <!--=====================================
+           BANNER PART START <link rel="stylesheet" href="css/checkout.css">
+=======================================-->
+    <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>Mon panier </h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('app_accueil') }}">Accueil</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Recaputilatif de ma commande</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+
+    <section class="inner-section checkout-part">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-5">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Mon adresse de livraison</h4>
+                        </div>
+                        <div class="account-content">
+
+                            <div class="alert fade show">
+                                <div class="profile-card address active"><h6>{{ addresse.NomAdresse }}</h6>
+                                    <p><strong>
+                                            {% if addresse.client %}
+                                                {{ addresse.client.nom ~' '~ addresse.client.prenoms }}
+                                            {% endif %}
+                                        </strong></p>
+                                    <p> quartier, {{ addresse.lieuLivraison }}</p>
+                                    <p>Téléphone : {{ addresse.telephone }}</p>
+                                    {% if addresse.client %}
+                                        <p>Email : {{ addresse.client.email }}</p>
+                                    {% endif %}
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="account-title">
+                            <h4>Methode de paiement </h4>
+                        </div>
+                        <div class="account-content">
+                            {{ methodepaiement }}
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Ma commande</h4>
+                        </div>
+                        <div class="account-content">
+                            <div class="table-scroll">
+                                <table class="table-list">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Produit</th>
+                                        <th scope="col">Prix</th>
+
+                                        <th scope="col">quantite</th>
+                                        <th scope="col">Total</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for element in elements %}
+                                        <tr>
+
+                                            <td class="table-name"><h6>{{ element.produit.Nom }}</h6></td>
+                                            <td class="table-price"><h6>{{ element.produit.prix }}
+                                                  </h6></td>
+
+                                            <td class="table-quantity"><h6>{{ element.quantite }}</h6></td>
+                                            <td>
+                                                {{ element.produit.prix * element.quantite }}
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                            <div class="checkout-charge mt-5">
+                                <ul>
+                                    <li><span>Sous total</span><span>{{ total }}</span></li>
+                                    <li><span>Frais de livraison</span><span>-</span></li>
+
+                                    <li><span>Total<small></small></span><span>{{ total }}</span></li>
+                                </ul>
+                            </div>
+                            <div class="checkout-proced mt-3">
+{#                                {{ dump(commande.id) }}#}
+                                {#                                <a href="{{ path('commande_end',{'id':commande.id}) }}" class="btn btn-inline"> Terminer ma commande </a> #}
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('front/css/contact.css') }}">
+
+
+{% endblock %}
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    <!--=====================================
+                   BANNER PART START
+       =======================================-->
+    <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>Glénou</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('app_accueil') }}">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Glénou</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+    <section class="inner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-justify">
+                        Page en construction
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

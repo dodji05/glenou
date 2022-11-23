@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('front/css/checkout.css') }}">
+
+
+{% endblock %}
+{% block body %}
+    <!--=====================================
+           BANNER PART START <link rel="stylesheet" href="css/checkout.css">
+=======================================-->
+    <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>Mon panier </h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('app_accueil') }}">Accueil</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Ma commande</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+
+    <section class="inner-section checkout-part">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-5">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Mon adresse de livraison</h4>
+                        </div>
+                        <div class="account-content">
+                            {{ form_start(form,{action:path('commande_checkout')}) }}
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Ma commande</h4>
+                        </div>
+                        <div class="account-content">
+                            <div class="table-scroll">
+                                <table class="table-list">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Produit</th>
+                                        <th scope="col">Prix</th>
+
+                                        <th scope="col">quantite</th>
+                                        <th scope="col">Total</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for element in elements %}
+                                        <tr>
+
+                                            <td class="table-name"><h6>{{ element.produit.Nom }}</h6></td>
+                                            <td class="table-price"><h6>{{ element.produit.Prix }}
+                                                    </h6></td>
+
+                                            <td class="table-quantity"><h6>{{ element.quantite }}</h6></td>
+                                            <td>
+                                                {{ element.produit.Prix * element.quantite}}
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

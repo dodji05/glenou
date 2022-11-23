@@ -1,0 +1,63 @@
+{% extends 'dashboard_base.html.twig' %}
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Les produits</h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Produit</th>
+                            <th>Acteur</th>
+                            <th>Prix</th>
+                            <th>Publie le</th>
+                            <th>Disponibilité</th>
+
+                            <th>localite</th>
+                            <th>Vue</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for produit in produits %}
+
+                            <tr>
+                                <th>
+                                    <img src="{{ produit.imagesProduits | first }}" alt="Product Image"
+                                         class="img-size-50">
+                                </th>
+                                <td><a href="{{ path('super_admin_produit_show',{'id':produit.id}) }}">
+                                        {{ produit.libelle }}</a></td>
+                                <td>{{ produit.utilisateur.userIdentifier }}</td>
+                                <td>{{ produit.prix }} FCFA / {{ produit.uniteMesure }}</td>
+                                <td>3</td>
+                                <td>{{ produit.disponibilite ? produit.disponibilite|date('Y-m-d') : '' }}</td>
+
+                                <td>
+                                    {{ produit.localite.libelle  }}
+
+                                </td>
+                                <td>{{ produit.nbVisite }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

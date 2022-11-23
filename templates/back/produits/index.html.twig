@@ -1,0 +1,100 @@
+{% extends 'dashboard_base.html.twig' %}
+{% block style %}
+
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    {#    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">#}
+{% endblock %}
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Mes produits</h3>
+                    <div class="card-tools">
+                        <a  class="btn btn-primary float-right" href="{{ path('app_produits_new') }}"><i class="fas fa-plus"></i> Publier un produit</a>
+                        {#                    <button type="button" class="btn btn-tool" data-card-widget="collapse">#}
+                        {#                        <i class="fas fa-minus"></i>#}
+                        {#                    </button>#}
+                        {#                    <button type="button" class="btn btn-tool" data-card-widget="remove">#}
+                        {#                 class="table table-striped dataTables_wrapper dt-bootstrap4" id="example1_wrapper"        <i class="fas fa-times"></i>#}
+                        {#                    </button>#}
+                    </div>
+                </div>
+                <div class="card-body p-5">
+                    <table class="table table-striped dataTables_wrapper dt-bootstrap4" id="example1_wrapper">
+                        <thead>
+                        <tr>
+
+                            <th>Produit</th>
+                            <th>Stock</th>
+                            <th>Prix</th>
+                            <th>Localite</th>
+                            <th>Disponibilite</th>
+
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for produit in produits %}
+                            <tr>
+
+                                <td>{{ produit.libelle }}</td>
+
+                                <td>{{ produit.stock }} {{ produit.uniteMesure }}</td>
+
+
+                                <td>{{ produit.prix }}</td>
+
+                                <td>{{ produit.localite }}</td>
+                                <td>{{ produit.disponibilite }}</td>
+
+
+                                <td>
+                                    <a href="{{ path('app_produits_show', {'id': produit.id}) }}">show</a>
+                                    <a href="{{ path('app_produits_edit', {'id': produit.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="14">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <a href="{{ path('app_produits_new') }}">Create new</a>
+{% endblock %}
+{% block javascript %}
+<script src="{{ asset('dashboard/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{  asset('dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+{#<script src="{{ asset('responsive.bootstrap4.min.js"') }}../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>#}
+
+<script>
+  $(function () {
+    $("#example1_wrapper").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+{% endblock %}

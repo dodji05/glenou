@@ -1,0 +1,30 @@
+   <!--=====================================
+                    NEW ITEM PART START
+        =======================================-->
+        <section class="section newitem-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section-heading">
+                            <h2>Produits populaires</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <ul class="new-slider slider-arrow">
+                            {% for produit in produitsPopulaires %}
+                            <li>
+                                {% include 'front/partials/_item.html.twig' %}
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section> 
+        <!--=====================================
+                    NEW ITEM PART END
+        =======================================-->

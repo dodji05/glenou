@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!--=====================================
+                META TAG PART START
+    =======================================-->
+    <!-- REQUIRE META -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {# <!-- AUTHOR META --> #}
+    {# <meta name="author" content="mironcoder"> #}
+    {# <meta name="email" content="mironcoder@gmail.com"> #}
+    {# <meta name="profile" content="https://themeforest.net/user/mironcoder"> #}
+
+    <!-- TEMPLATE META -->
+    <meta name="name" content="Glenou">
+    <meta name="title" content="solution digitale de mise en marché et de promotion des produits agricoles">
+    <meta name="keywords"
+          content="agricoles, produits, produit agricole, ecommerce, store, html, bootstrap, template, agriculture, vegetables, webshop, farm, grocery, natural, online store">
+    <!--=====================================
+                META-TAG PART END
+    =======================================-->
+
+    <!-- WEBPAGE TITLE -->
+    <title>{% block title %} Glenou {% endblock %}</title>
+
+    <!--=====================================
+                CSS LINK PART START
+    =======================================-->
+    <!-- FAVICON -->
+    <link rel="icon" href="images/favicon.png">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href=" {{ asset('front/fonts/flaticon/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/fonts/icofont/icofont.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/fonts/fontawesome/fontawesome.min.css') }}">
+
+    <!-- VENDOR -->
+    <link rel="stylesheet" href="{{ asset('front/vendor/venobox/venobox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/vendor/slickslider/slick.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/vendor/niceselect/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/vendor/bootstrap/bootstrap.min.css') }}">
+
+    <!-- CUSTOM -->
+    <link rel="stylesheet" href="{{ asset('front/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/css/index.css') }}">
+    <!--=====================================
+                CSS LINK PART END
+    =======================================-->
+    {% block stylesheets %}
+
+    {% endblock %}
+</head>
+
+<body>
+{% if app.request.get('_route') != "app_login" and app.request.get('_route') != "app_register" %}
+    <div class="backdrop"></div>
+    <a class="backtop fas fa-arrow-up" href="#"></a>
+
+    <!--=====================================
+                   HEADER PART START
+       =======================================-->
+    <header class="header-part">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-media-group">
+                    <button class="header-user"><img src="{{ asset('front/images/user.png') }}" alt="user"></button>
+                    <a href="{{ path('app_accueil') }}"><img src="{{ asset('app/images/logo.png') }}" alt="logo"></a>
+                    <button class="header-src"><i class="fas fa-search"></i></button>
+                </div>
+
+                <a href="{{ path('app_accueil') }}" class="header-logo">
+                    <img src="{{ asset('app/images/logo.png') }}" alt="logo">
+                </a>
+
+
+                <form class="header-form">
+                    <input type="text" placeholder="Chercher un produit...">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+
+                <div class="header-widget-group">
+                    <a href="{{ path('app_login') }}" class="header-widget" title="Se connecter">
+                        <img src="{{ asset('front/images/user.png') }}" alt="user">
+                        {# <span>Se connecter</span> #}
+                    </a>
+                    {# <a href="compare.html" class="header-widget" title="Compare List"> #}
+                    {# <i class="fas fa-random"></i> #}
+                    {# <sup>0</sup> #}
+                    {# </a> #}
+                    {# <a href="wishlist.html" class="header-widget" title="Wishlist"> #}
+                    {# <i class="fas fa-heart"></i> #}
+                    {# <sup>0</sup> #}
+                    {# </a> #}
+                    <button class="header-widget header-cart" title="Cartlist">
+                        <i class="fas fa-shopping-basket"></i>
+                        {# <sup>9+</sup> #}
+                        {# <span>total price<small>$345.00</small></span> #}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--=====================================
+                HEADER PART END
+    =======================================-->
+
+    <!--=====================================
+                       NAVBAR PART START
+           =======================================-->
+    <nav class="navbar-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="navbar-content">
+                        <ul class="navbar-list">
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{{ path('app_accueil') }}">Accueil</a>
+
+                            </li>
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{{ path('app_eyobu') }}">Glenou</a>
+
+                            </li>
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{{ path('app_boutique') }}">Boutique</a>
+
+                            </li>
+
+                            <li class="navbar-item dropdown-megamenu">
+                                <a class="navbar-link dropdown-arrow" href="#">Categories</a>
+                                <div class="megamenu">
+                                    <div class="container megamenu-scroll">
+                                        <div class="row row-cols-5">
+                                            {% for cat in lescategories.getCategorie %}
+                                                <div class="col">
+                                                    <div class="megamenu-wrap">
+                                                        <h5 class="megamenu-title">{{ cat.libelle }}</h5>
+                                                        <ul class="megamenu-list">
+
+                                                            {% for pdt in cat.produits | slice(0,5) %}
+                                                                {% if cat.produits | length > 0 %}
+                                                                    <li><a href="#">carrot</a></li>
+                                                                    <li><a href="#">broccoli</a></li>
+                                                                    <li><a href="#">asparagus</a></li>
+                                                                    <li><a href="#">cauliflower</a></li>
+                                                                    <li><a href="#">eggplant</a></li>
+                                                                {% endif %}
+                                                            {% endfor %}
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="navbar-item">
+                                <a class="navbar-link" href="{{ path('app_contact') }}">Contact</a>
+
+                            </li>
+
+
+                        </ul>
+                        <div class="navbar-info-group">
+                            <div class="navbar-info">
+                                <i class="icofont-ui-touch-phone"></i>
+                                <p>
+                                    <small>Télephone</small>
+                                    <span>(+229)68 83 16 16</span>
+                                </p>
+                            </div>
+                            <div class="navbar-info">
+                                <i class="icofont-ui-email"></i>
+                                <p>
+                                    <small>email</small>
+                                    <span>infos@glenou.bj</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--=====================================
+                NAVBAR PART END
+    =======================================-->
+    <!--=====================================
+            NAV SIDEBAR PART START
+    =======================================-->
+    <aside class="nav-sidebar">
+        <div class="nav-header">
+            <a href="{{ path('app_accueil') }}"><img src="{{ asset('app/images/logo.png') }}" alt="glenou"></a>
+            <button class="nav-close"><i class="icofont-close"></i></button>
+        </div>
+        <div class="nav-content">
+            <div class="nav-btn">
+                <a href="{{ path('app_login') }}" class="btn btn-inline">
+                    <i class="fa fa-unlock-alt"></i>
+                    <span>Connectez</span>
+                </a>
+            </div>
+            <!-- This commentable code show when user login or register -->
+            <!-- <div class="nav-profile">
+                <a class="nav-user" href="#"><img src="images/user.png" alt="user"></a>
+                <h4 class="nav-name"><a href="profile.html">Miron Mahmud</a></h4>
+            </div> -->
+
+{#            <ul class="nav-list">#}
+
+{#                <li><a class="nav-link" href="offer.html"><i class="icofont-sale-discount"></i>offers</a></li>#}
+{#                <li><a class="nav-link" href="about.html"><i class="icofont-info-circle"></i>Le projet</a></li>#}
+{#                <li><a class="nav-link" href="faq.html"><i class="icofont-support-faq"></i>Boutique</a></li>#}
+{#                <li><a class="nav-link" href="contact.html"><i class="icofont-contacts"></i>Categorie</a></li>#}
+{#                <li><a class="nav-link" href="privacy.html"><i class="icofont-warning"></i>Contact</a></li>#}
+{#                <li><a class="nav-link" href="coming-soon.html"><i class="icofont-options"></i>coming soon</a></li>#}
+{#                <li><a class="nav-link" href="error.html"><i class="icofont-ui-block"></i>404 error</a></li>#}
+{#                <li><a class="nav-link" href="login.html"><i class="icofont-logout"></i>logout</a></li>#}
+{#            </ul>#}
+            <div class="nav-info-group">
+                <div class="nav-info">
+                    <i class="icofont-ui-touch-phone"></i>
+                    <p>
+                        <small>Télephone</small>
+                        <span>(+229)68 83 16 16</span>
+                    </p>
+                </div>
+                <div class="nav-info">
+                    <i class="icofont-ui-email"></i>
+                    <p>
+                        <small>Email</small>
+                        <span>infos@glenou.bj</span>
+                    </p>
+                </div>
+            </div>
+            {# <div class="nav-footer"> #}
+            {# <p>All Rights Reserved by <a href="#">Mironcoder</a></p> #}
+            {# </div> #}
+        </div>
+    </aside>
+    <!--=====================================
+              NAV SIDEBAR PART END
+    =======================================-->
+
+
+    <!--=====================================
+                MOBILE-MENU PART START
+    =======================================-->
+    <div class="mobile-menu">
+        <a href="{{ path('app_accueil')}}" title="Home Page">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <button class="cate-btn" title="Category List">
+            <i class="fas fa-list"></i>
+            <span>category</span>
+        </button>
+        <button class="cart-btn" title="Cartlist">
+            <i class="fas fa-shopping-basket"></i>
+            <span>cartlist</span>
+            <sup>9+</sup>
+        </button>
+        <a href="wishlist.html" title="Wishlist">
+            <i class="fas fa-heart"></i>
+            <span>wishlist</span>
+            <sup>0</sup>
+        </a>
+        <a href="compare.html" title="Compare List">
+            <i class="fas fa-random"></i>
+            <span>compare</span>
+            <sup>0</sup>
+        </a>
+    </div>
+    <!--=====================================
+                MOBILE-MENU PART END
+    =======================================-->
+{% endif %}
+{% block body %}{% endblock %}
+
+<!--=====================================
+                  FOOTER PART START
+     =======================================-->
+<footer class="footer-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-xl-4">
+                <div class="footer-widget">
+                    <a class="footer-logo" href="#">
+                        <img src="{{ asset('app/images/logo.png') }}" alt="glenou">
+                    </a>
+                    <p class="footer-desc">
+                        L’objectif général de Glenou est d’influencer les politiques et les programmes nationaux
+                        pour obtenir
+                        de meilleures conditions de développement pour les exploitations familiales agricoles
+                        béninoises.
+                    </p>
+                    <ul class="footer-social">
+                        <li><a class="icofont-facebook" href="https://www.facebook.com/"></a></li>
+                        {# <li><a class="icofont-twitter" href="#"></a></li> #}
+                        {# <li><a class="icofont-linkedin" href="#"></a></li> #}
+                        {# <li><a class="icofont-instagram" href="#"></a></li> #}
+                        {# <li><a class="icofont-pinterest" href="#"></a></li> #}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-4">
+                <div class="footer-widget contact">
+                    <h3 class="footer-title">Contact</h3>
+
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="icofont-ui-email"></i>
+                            <p>
+
+                                <span>infos@glenou.bj</span>
+                            </p>
+                        </li>
+                        <li>
+                            <i class="icofont-ui-touch-phone"></i>
+                            <p>
+                                <span>+229 68 83 16 16</span>
+
+                            </p>
+                        </li>
+                        <li>
+                            <i class="icofont-location-pin"></i>
+                            <p> Abomey Calavi</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {# <div class="col-sm-6 col-xl-3"> #}
+            {# <div class="footer-widget"> #}
+            {# <h3 class="footer-title">quick Links</h3> #}
+            {# <div class="footer-links"> #}
+            {# <ul> #}
+            {# <li><a href="#">My Account</a></li> #}
+            {# <li><a href="#">Order History</a></li> #}
+            {# <li><a href="#">Order Tracking</a></li> #}
+            {# <li><a href="#">Best Seller</a></li> #}
+            {# <li><a href="#">New Arrivals</a></li> #}
+            {# </ul> #}
+            {# <ul> #}
+            {# <li><a href="#">Location</a></li> #}
+            {# <li><a href="#">Affiliates</a></li> #}
+            {# <li><a href="#">Contact</a></li> #}
+            {# <li><a href="#">Carrer</a></li> #}
+            {# <li><a href="#">Faq</a></li> #}
+            {# </ul> #}
+            {# </div> #}
+            {# </div> #}
+            {# </div> #}
+            <div class="col-sm-6 col-xl-4">
+{#                <div class="footer-widget">#}
+{#                    <h3 class="footer-title">Télécharger l'application</h3>#}
+{#                    <p class="footer-desc">#}
+{#                       Glenou vous propose une large gamme de produits agricoles; il vous suffit de les commander#}
+{#                        et de vous les faire livrer. eYobu est disponible sur playstore.#}
+{#                    </p>#}
+{#                    <div class="footer-app">#}
+{#                        <a href="#"><img src="{{ asset('front/images/google-store.png') }}" alt="google"></a>#}
+{#                        #}{# <a href="#"><img src="images/app-store.png" alt="app"></a> #}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-bottom">
+                    <p class="footer-copytext">&copy; Tous droit reserves <a target="_blank"
+                                                                             href="">glenou</a>
+                    </p>
+                    <div class="footer-card">
+                        <a href="#"><img src="{{ asset('front/images/payment/payment-method.jpg') }}" alt="payment"></a>
+                        {# <a href="#"><img src="images/payment/jpg/02.jpg" alt="payment"></a> #}
+                        {# <a href="#"><img src="images/payment/jpg/03.jpg" alt="payment"></a> #}
+                        {# <a href="#"><img src="images/payment/jpg/04.jpg" alt="payment"></a> #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--=====================================
+                    JS LINK PART START
+        =======================================-->
+<!-- VENDOR -->
+<script src="{{ asset('front/vendor/bootstrap/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ asset('front/vendor/bootstrap/popper.min.js') }}"></script>
+<script src="{{ asset('front/vendor/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ asset('front/vendor/countdown/countdown.min.js') }}"></script>
+<script src="{{ asset('front/vendor/niceselect/nice-select.min.js') }}"></script>
+<script src="{{ asset('front/vendor/slickslider/slick.min.js') }}"></script>
+<script src="{{ asset('front/vendor/venobox/venobox.min.js') }}"></script>
+
+<!-- CUSTOM -->
+<script src="{{ asset('front/js/nice-select.js') }}"></script>
+<script src="{{ asset('front/js/countdown.js') }}"></script>
+<script src="{{ asset('front/js/accordion.js') }}"></script>
+<script src="{{ asset('front/js/venobox.js') }}"></script>
+<script src="{{ asset('front/js/slick.js') }}"></script>
+<script src="{{ asset('front/js/main.js') }}"></script>
+<!--=====================================
+            JS LINK PART END
+=======================================-->
+</body>
+</html>

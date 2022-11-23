@@ -1,0 +1,106 @@
+{% extends 'dashboard_base.html.twig' %}
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Details du produit : {{ produit.libelle }}</h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-5 col-md-4">
+                            <img src="{{ produit.imagesProduits | first }}" class="img-fluid"/>
+                        </div>
+                        <div class="col-sm-7 col-md-8">
+                            <table class="table table-striped">
+                                <tbody>
+
+                                {# <tr> #}
+                                {# <th>Nom</th> #}
+                                {# <td>{{ produit.libelle }}</td> #}
+                                {# </tr> #}
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ produit.Description | raw }}</td>
+                                </tr>
+                                {% if produit.stock %}
+                                    <tr>
+                                        <th>Stock</th>
+                                        <td>{{ produit.stock }} {{ produit.uniteMesure }}</td>
+                                    </tr>
+                                {% endif %}
+                                <tr>
+                                    <th>Categorie</th>
+                                    <td>{{ produit.categorie.libelle }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prix</th>
+                                    <td>{{ produit.prix }} / {{ produit.uniteMesure }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ produit.utilisateur.secteurActivite }}</th>
+                                    <td>{{ produit.utilisateur.userIdentifier }} </td>
+                                </tr>
+                                <tr>
+                                    <th>Disponibilité</th>
+                                    <td>{{ produit.disponibilite ? produit.disponibilite|date('Y-m-d') : '' }} </td>
+                                </tr>
+                                <tr>
+                                    <th>localite</th>
+                                    <td>{{ produit.localite.libelle }} </td>
+                                </tr>
+                                <tr>
+                                    <th>Terminal</th>
+                                    <td>{{ produit.terminal }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Vue</th>
+                                    <td>{{ produit.nbVisite }}</td>
+                                </tr>
+                                {# <tr> #}
+                                {# <th>Slug</th> #}
+                                {# <td>{{ produit.Slug }}</td> #}
+                                {# </tr> #}
+
+
+                                {# <tr>
+            <th>IsFeatured</th>
+            <td>{{ produit.IsFeatured ? 'Yes' : 'No' }}</td>
+        </tr> #}
+                                {# <tr> #}
+                                {# <th>Created_at</th> #}
+                                {# <td>{{ produit.createdAt ? produit.createdAt|date('Y-m-d H:i:s') : '' }}</td> #}
+                                {# </tr> #}
+                                {# <tr> #}
+                                {# <th>Udpated_at</th> #}
+                                {# <td>{{ produit.UdpatedAt ? produit.UdpatedAt|date('Y-m-d H:i:s') : '' }}</td> #}
+                                {# </tr> #}
+                                {# <tr> #}
+                                {# <th>DatePublication</th> #}
+                                {# <td>{{ produit.DatePublication ? produit.DatePublication|date('Y-m-d H:i:s') : '' }}</td> #}
+                                {# </tr> #}
+
+                                {# <tr> #}
+                                {# <th>Status</th> #}
+                                {# <td>{{ produit.Status }}</td> #}
+                                {# </tr> #}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

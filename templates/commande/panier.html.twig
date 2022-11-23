@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('front/css/checkout.css') }}">
+
+
+{% endblock %}
+{% block body %}
+    <!--=====================================
+            BANNER PART START <link rel="stylesheet" href="css/checkout.css">
+=======================================-->
+    <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>Mon panier </h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('app_accueil') }}">Accueil</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Mon panier</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+
+    <!--=====================================
+                CHECKOUT PART START
+    =======================================-->
+    {% if elements | length > 0 %}
+        <section class="inner-section checkout-part">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="account-card">
+                            <div class="account-title">
+                                <h4>Votre panier</h4>
+                            </div>
+                            <div class="account-content">
+                                <div class="table-scroll">
+                                    <table class="table-list">
+                                        <thead>
+                                        <tr>
+
+                                            <th scope="col"></th>
+                                            <th scope="col">Produit</th>
+                                            <th scope="col">Prix</th>
+
+                                            <th scope="col">quantite</th>
+                                        <th scope="col">Total</th>
+                                            <th scope="col">action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for element in elements %}
+                                            <tr>
+                                                <td class="table-image"><img
+                                                            src="/uploads/images/produits/{{ element.produit.ImagePrincipale}}"
+                                                            alt="product"></td>
+                                                <td class="table-name"><h6>{{ element.produit.Nom }}</h6></td>
+                                                <td class="table-price"><h6>{{ element.produit.Prix }}
+                                                        </h6></td>
+
+                                                <td class="table-quantity"><h6><a href="{{path('app_cart_retirer',{'id':element.produit.id})}}"> <i class="icofont-minus"></i></a> &nbsp;{{ element.quantite }} &nbsp; <a href="{{path('app_cart_add',{'id': element.produit.id})}}"<i class="icofont-plus"></i></h6></td>
+                                                <td>
+                                                    {{ element.produit.prix * element.quantite}}
+                                                </td>
+                                                    <td class="table-action">
+                                                    <a class="view" href="#" title="Quick View" data-bs-toggle="modal"
+                                                       data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
+                                                    <a class="trash" href="{{ path('app_cart_delete',{'id':element.produit.id})}}" title="Remove Wishlist"><i
+                                                                class="icofont-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                    <a href="" class="btn btn-cart  btn-inline">Continuez mes achats </a>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="checkout-charge mt-3 pull-right">
+                                <ul>
+                                    {# <li> #}
+                                    {# <span>Total</span> #}
+                                    {# <span>{{ total }} FCFA</span> #}
+                                    {# </li> #}
+                                    {# <li> #}
+                                    {# <span>Les frais de livarison sont à la charge du client</span> #}
+                                    {# <span>-</span> #}
+                                    {# </li> #}
+                                    {# <li> #}
+                                    {# <span>discount</span> #}
+                                    {# <span>$00.00</span> #}
+                                    {# </li> #}
+                                    <li>
+
+                                        <span>Nombre de produits:</span>
+                                        <span>{{ elements | length }} </span>
+                                    </li>
+                                    <li>
+
+                                        <span>Total</span>
+                                        <span>{{ total }} FCFA </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="checkout-proced"><a href="{{ path('commande') }}" class="btn btn-inline">valider mon panier</a></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <!--=====================================
+                CHECKOUT PART END
+    =======================================-->
+{% endblock %}

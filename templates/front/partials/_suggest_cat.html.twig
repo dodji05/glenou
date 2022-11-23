@@ -1,0 +1,21 @@
+ <!--=====================================
+                    SUGGEST PART START
+        =======================================-->
+        <section class="section suggest-part">
+            <div class="container">
+                <ul class="suggest-slider slider-arrow">
+                {% for cat  in categories %}
+                    <li>
+                        <a class="suggest-card" href="{{path('app_categorie_boutique',{'slug':cat.slug})}}">
+                            <img src="{{ cat.images }}" alt="suggest">
+                            <h5>{{ cat.libelle}} <span>{{ cat.produits | length}}</span></h5>
+                        </a>
+                    </li>
+                {% endfor %}
+                   
+                </ul>
+            </div>
+        </section>
+        <!--=====================================
+                    SUGGEST PART END
+        =======================================-->

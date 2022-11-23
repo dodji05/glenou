@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c358a2ed-7a0e-4164-9ff0-ed3f60733a6f" name="eyobu" url="http://jinukun.bj">
+        <fileTransfer rootFolder="/public_html/glenou.bj" host="jinukun.bj" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

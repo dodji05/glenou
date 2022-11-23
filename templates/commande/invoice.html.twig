@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('front/css/checkout.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/css/invoice.css') }}">
+
+
+{% endblock %}
+{% block body %}
+    <!--=====================================
+           BANNER PART START <link rel="stylesheet" href="css/checkout.css">
+    =======================================-->
+    <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>Mon panier </h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('app_accueil') }}">Accueil</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Recaputilatif de ma commande</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+
+    <!--=====================================
+                   INVOICE PART START
+       =======================================-->
+    <section class="inner-section invoice-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert-info">
+                        <p>Merci! nous avons bien recu votre commande.</p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Commande recue</h4>
+                        </div>
+                        <div class="account-content">
+                            <div class="invoice-recieved">
+                                <h6>N commande <span>{{ commande.id }}</span></h6>
+                                <h6>Date de la commande <span>{{ commande.dateCommande |date('d-M-Y') }}</span></h6>
+                                <h6>total de la commande <span>$24,176.00</span></h6>
+                                <h6>Methode de paiement <span>
+                                        {% if  commande.methodePaiement =="PAL" %}
+                                            Payable à la livraison
+                                        {% else %}
+                                            Momo/Flooz
+                                        {% endif %}
+                                        </span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>details de la commande</h4>
+                        </div>
+                        <div class="account-content">
+                            <ul class="invoice-details">
+                                <li>
+                                    <h6>Produit total</h6>
+                                    <p>{{ commande.lignesCommandes | length }}</p> produits
+                                </li>
+                                {# <li> #}
+                                {# <h6>Order Time</h6> #}
+                                {# <p>1.00pm 10-12-2021</p> #}
+                                {# </li> #}
+                                {# <li> #}
+                                {# <h6>Delivery Time</h6> #}
+                                {# <p>90 Minute Express Delivery</p> #}
+                                {# </li> #}
+                                <li>
+                                    <h6>Lieu de livraison</h6>
+                                    <p>{{ commande.adresselivraison.lieuLivraison }}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Amount Details</h4>
+                        </div>
+                        <div class="account-content">
+                            <ul class="invoice-details">
+                                <li>
+                                    <h6>Sub Total</h6>
+                                    <p>$10,864.00</p>
+                                </li>
+                                {# <li> #}
+                                {# <h6>discount</h6> #}
+                                {# <p>$20.00</p> #}
+                                {# </li> #}
+                                <li>
+                                    <h6>Methode de paiement</h6>
+                                    <p>{{ commande.methodePaiement }}</p>
+                                </li>
+                                <li>
+                                    <h6>Total<small>(Incl. VAT)</small></h6>
+                                    <p>$10,874.00</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="table-scroll">
+                        <table class="table-list">
+                            <thead>
+                            <tr>
+                                <th scope="col">Serial</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">brand</th>
+                                <th scope="col">quantity</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="table-serial"><h6>01</h6></td>
+                                <td class="table-image"><img src="images/product/01.jpg" alt="product"></td>
+                                <td class="table-name"><h6>product name</h6></td>
+                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
+                                <td class="table-brand"><h6>Fresh Company</h6></td>
+                                <td class="table-quantity"><h6>3</h6></td>
+                            </tr>
+                            <tr>
+                                <td class="table-serial"><h6>02</h6></td>
+                                <td class="table-image"><img src="images/product/02.jpg" alt="product"></td>
+                                <td class="table-name"><h6>product name</h6></td>
+                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
+                                <td class="table-brand"><h6>Radhuni Masala</h6></td>
+                                <td class="table-quantity"><h6>5</h6></td>
+                            </tr>
+                            <tr>
+                                <td class="table-serial"><h6>03</h6></td>
+                                <td class="table-image"><img src="images/product/03.jpg" alt="product"></td>
+                                <td class="table-name"><h6>product name</h6></td>
+                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
+                                <td class="table-brand"><h6>Pran Prio</h6></td>
+                                <td class="table-quantity"><h6>2</h6></td>
+                            </tr>
+                            <tr>
+                                <td class="table-serial"><h6>04</h6></td>
+                                <td class="table-image"><img src="images/product/04.jpg" alt="product"></td>
+                                <td class="table-name"><h6>product name</h6></td>
+                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
+                                <td class="table-brand"><h6>Real Food</h6></td>
+                                <td class="table-quantity"><h6>3</h6></td>
+                            </tr>
+                            <tr>
+                                <td class="table-serial"><h6>05</h6></td>
+                                <td class="table-image"><img src="images/product/05.jpg" alt="product"></td>
+                                <td class="table-name"><h6>product name</h6></td>
+                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
+                                <td class="table-brand"><h6>Rdhuni Company</h6></td>
+                                <td class="table-quantity"><h6>7</h6></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center mt-5">
+
+                    <div class="back-home">
+                        <a href="index.html">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=====================================
+                INVOICE PART END
+    =======================================-->
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AdresseLivraison index{% endblock %}
+
+{% block body %}
+    <h1>AdresseLivraison index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>LieuLivraison</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adresse_livraison in adresse_livraisons %}
+            <tr>
+                <td>{{ adresse_livraison.id }}</td>
+                <td>{{ adresse_livraison.lieuLivraison }}</td>
+                <td>{{ adresse_livraison.telephone }}</td>
+                <td>
+                    <a href="{{ path('app_adresse_livraison_show', {'id': adresse_livraison.id}) }}">show</a>
+                    <a href="{{ path('app_adresse_livraison_edit', {'id': adresse_livraison.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adresse_livraison_new') }}">Create new</a>
+{% endblock %}

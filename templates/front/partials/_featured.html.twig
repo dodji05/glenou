@@ -1,0 +1,37 @@
+<!--=====================================
+                 FEATURED PART START
+     =======================================-->
+<section class="section feature-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Meilleurs ventes</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
+
+            {% for produit in meilleursVentes %}
+                <div class="col">
+                    {% include'front/partials/_item_meilleurs_vente.html.twig' %}
+                </div>
+            {% endfor %}
+
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-btn-25">
+                    <a href="{{ path('app_boutique') }}" class="btn btn-outline">
+                        <i class="fas fa-eye"></i>
+                        <span>Voir plus</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=====================================
+            FEATURE PART END
+=======================================-->

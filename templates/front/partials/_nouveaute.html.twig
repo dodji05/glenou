@@ -1,0 +1,36 @@
+<!--=====================================
+                   RECENT PART START
+       =======================================-->
+<section class="section recent-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Boutiques</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            {% for produit in produits %}
+                <div class="col">
+                    {% include 'front/partials/_item.html.twig' %}
+
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-btn-25">
+                    <a href="shop-4column.html" class="btn btn-outline">
+                        <i class="fas fa-eye"></i>
+                        <span>Voir plus</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=====================================
+            RECENT PART END
+=======================================-->

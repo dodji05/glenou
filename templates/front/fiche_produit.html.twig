@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('front/css/product-details.css') }}">
+
+
+{% endblock %}
+{% block title %}
+   eYobu -  {{ produit.Nom }}
+{% endblock %}
+{% block body %}
+    <!--=====================================
+             BANNER PART START
+ =======================================-->
+    <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>{{ produit.Nom }}</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('app_accueil') }}">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('app_boutique') }}">Boutique</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ produit.Nom }}</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+
+    <!--=====================================
+               PRODUCT DETAILS PART START
+       =======================================-->
+    <section class="inner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="details-gallery">
+                        {# <div class="details-label-group"> #}
+                        {# <label class="details-label new">new</label> #}
+                        {# <label class="details-label off">-10%</label> #}
+                        {# </div> #}
+                        <ul class="details-preview">
+
+                                <li><img src="/uploads/images/produits/{{ produit.ImagePrincipale}}" alt="{{ produit.Nom }}"></li>
+
+
+                        </ul>
+                        <ul class="details-thumb">
+
+                                <li><img src="/uploads/images/produits/{{ produit.ImagePrincipale}}" alt="{{ produit.Nom }}"></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                   {# <ul class="product-navigation">
+                        <li class="product-nav-prev">
+                            <a href="#">
+                                <i class="icofont-arrow-left"></i>
+                                prev product
+                                <span class="product-nav-popup">
+                                        <img src="images/product/02.jpg" alt="product">
+                                        <small>green chilis</small>
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="product-nav-next">
+                            <a href="#">
+                                next product
+                                <i class="icofont-arrow-right"></i>
+                                <span class="product-nav-popup">
+                                        <img src="images/product/03.jpg" alt="product">
+                                        <small>green chilis</small>
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>#}
+                    <div class="details-content">
+                        <h3 class="details-name"><a href="#">{{ produit.Nom }}</a></h3>
+{#                        <div class="details-meta">#}
+
+{#                            <p>{{ produit.utilisateur.secteurActivite }} : <a href="#">{{ produit.utilisateur.userIdentifier }}#}
+{#                                 ( {{  produit.utilisateur.telephone }} )#}
+{#                                </a></p>#}
+{#                        </div>#}
+
+                        <h3 class="details-price">
+                            {# <del>$38.00</del> #}
+                            <span>{{ produit.prix }} FCFA</span>
+                        </h3>
+                        <p class="details-desc">
+                            {{ produit.description }}
+                        </p>
+                      {#  <label class="details-list-title">Disponibilite du produit : </label> {{ produit.disponibilite ? produit.disponibilite|date('d-m-Y') : ''  }}<br>
+                        <label class="details-list-title">localite du produit : </label> {{ produit.localite ? produit.localite.libelle : ''  }}<br>
+                       {% if produit.stock %}
+                           <label class="details-list-title">Stock disponible : </label> {{ produit.stock }} {{ produit.uniteMesure }}<br>
+
+                       {% endif %}#}
+                        <br>
+                        <div class="details-list-group">
+                            <label class="details-list-title">Catégorie:</label>
+                            <ul class="details-tag-list">
+
+{#                                    <li><a href="#"> {{ produit.categorie.libelle }}</a></li>#}
+
+
+                            </ul>
+                        </div>
+                        <div class="details-list-group">
+                            <label class="details-list-title">Partagez:</label>
+                            <ul class="details-share-list">
+                                <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
+                                <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
+
+                                <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
+                            </ul>
+                        </div>
+                        <div class="details-add-group">
+                            {# <button class="product-add" title="Ajouter au panier">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span>Ajouter au panier</span>
+                            </button>
+                             <div class="product-action"> #}
+                            {# <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i> #}
+                            {# </button> #}
+                            {# <input class="action-input" title="Quantity Number" type="text" name="quantity" #}
+                            {# value="1"> #}
+                            {# <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button> #}
+                            {# </div> #}
+                        </div>
+                        {# <div class="details-action-group"> #}
+                        {# <a class="details-wish wish" href="#" title="Add Your Wishlist"> #}
+                        {# <i class="icofont-heart"></i> #}
+                        {# <span>add to wish</span> #}
+                        {# </a> #}
+                        {# <a class="details-compare" href="compare.html" title="Compare This Item"> #}
+                        {# <i class="fas fa-random"></i> #}
+                        {# <span>Compare This</span> #}
+                        {# </a> #}
+                        {# </div> #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=====================================
+            PRODUCT DETAILS PART END
+    =======================================-->
+
+    <!--=====================================
+                     PRODUCT TAB PART START
+           =======================================-->
+
+    <section class="inner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+                        <h3 class="frame-title">Description</h3>
+                        <div class="tab-descrip">
+                            {{ produit.description | raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=====================================
+                 PRODUCT TAB PART END
+     =======================================-->
+
+    <!--=====================================
+               PRODUCT RELATED PART START
+      =======================================-->
+    <section class="inner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section-heading">
+                        <h2>Ils ont également acheté</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            {% for produit in produits %}
+            <div class="col">
+                {% include 'front/partials/_item.html.twig' %}
+
+            </div>
+        {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

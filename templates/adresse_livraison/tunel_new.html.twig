@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('front/css/checkout.css') }}">
+
+
+{% endblock %}
+{% block body %}
+    <!--=====================================
+           BANNER PART START <link rel="stylesheet" href="css/checkout.css">
+=======================================-->
+    <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>Mon panier </h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('app_accueil') }}">Accueil</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">adresse de livraison</li>
+            </ol>
+        </div>
+    </section>
+    <!--=====================================
+                BANNER PART END
+    =======================================-->
+
+    <section class="inner-section checkout-part">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-6">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Mon adresse de livraison</h4>
+                        </div>
+                        <div class="account-content">
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <button class="btn">{{ button_label|default('Enregistrer mon adresse') }}</button>
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
