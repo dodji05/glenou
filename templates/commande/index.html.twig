@@ -107,5 +107,19 @@
         theme="#0095ff"
         sandbox="false"
         key="ce35f5c0266411eba51f139c0a8b857b"
-        src="https://cdn.kkiapay.me/k.js"></script>
+        src="https://cdn.kkiapay.me/k.js">
+
+</script>
+<script>
+$(document).ready(function() {
+    // $('.select').niceSelect();
+     $('.mobile').hide()
+    var $methode = document.getElementsByName("commande[paiement]");
+
+     if( $methode=='PAL'){
+          $('.mobile').show()
+     }
+});
+
+</script>
 {% endblock %}
