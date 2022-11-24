@@ -34,12 +34,13 @@
                         </div>
                         <div class="account-content">
                             {{ form_start(form,{action:path('commande_checkout')}) }}
-                            <button type="submit" class="mobile"> mobile money
+                            <button type="submit" class="mobile btn btn-success"> mobile money
 
                             </button>
-                            <button type="submit" class="pal"> patemebt a llivraison
+                            <button type="submit" class="pal btn btn-primary"> patemebt a llivraison
 
                             </button>
+                            {{ form_widget(form) }}
                             {{ form_end(form) }}
 
                         </div>
