@@ -35,10 +35,10 @@
                         <div class="account-content">
                             {{ form_start(form,{action:path('commande_checkout')}) }}
                             {{ form_widget(form) }}
-                            <button type="submit" class="mobile btn btn-success"> mobile money
+                            <button type="button" class="mobile btn btn-success kkiapay-button"> Payer
 
                             </button>
-                            <button type="submit" class="pal btn btn-primary"> patemebt a llivraison
+                            <button type="submit" class="pal btn btn-primary"> Payer
 
                             </button>
 
@@ -96,4 +96,16 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block javascript %}
+<script amount="{{ total  }}"
+        callback="commande/checkout"
+        data=""
+        url="<url-vers-votre-logo>"
+        position="right"
+        theme="#0095ff"
+        sandbox="true"
+        key="ce35f5c0266411eba51f139c0a8b857b"
+        src="https://cdn.kkiapay.me/k.js"></script>
 {% endblock %}
