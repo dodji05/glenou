@@ -35,10 +35,10 @@
                         <div class="account-content">
                             {{ form_start(form,{action:path('commande_checkout')}) }}
                             {{ form_widget(form) }}
-                            <button type="button" class="mobile btn btn-success kkiapay-button"> Payer M
+                            <button type="button" class="mobile btn btn-success kkiapay-button btn-js"> Payer M
 
                             </button>
-                            <button type="submit" class="pal btn btn-primary"> Payer
+                            <button type="submit" class="pal btn btn-primary btn-js"> Payer
 
                             </button>
 
@@ -114,9 +114,9 @@
 $(document).ready(function() {
     // $('.select').niceSelect();
      $('.mobile').hide()
-    var $methode = document.getElementsByName('[name="commande[paiement]"]');
-
-      $methode.change(function () {
+    let $methode = document.getElementsByName('[name="commande[paiement]"]');
+console.log($methode)
+      $methode.checked(function () {
           if( $methode.val()=='PAL'){
           $('.mobile').show()
      }
