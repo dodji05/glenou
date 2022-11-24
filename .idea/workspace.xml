@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7cca4d42-dedc-4a16-8016-0d8a354ce37b" name="Default Changelist" comment="" />
+    <list default="true" id="7cca4d42-dedc-4a16-8016-0d8a354ce37b" name="Default Changelist" comment="kkipay">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommandeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommandeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CommandeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommandeType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commande/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commande/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commande/kkiapay.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commande/kkiapay.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -451,8 +459,17 @@
       <workItem from="1662087185654" duration="591000" />
       <workItem from="1666340232789" duration="2093000" />
       <workItem from="1669174683499" duration="881000" />
-      <workItem from="1669178544465" duration="2640000" />
+      <workItem from="1669178544465" duration="3027000" />
+      <workItem from="1669283049420" duration="3251000" />
     </task>
+    <task id="LOCAL-00001" summary="kkipay">
+      <created>1669285015949</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669285015949</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,6 +485,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="kkipay" />
+    <option name="LAST_COMMIT_MESSAGE" value="kkipay" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

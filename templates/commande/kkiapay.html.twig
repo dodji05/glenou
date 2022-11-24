@@ -12,7 +12,7 @@
 <script src="https://cdn.kkiapay.me/k.js"></script>
 <script>
     jQuery(document).ready(function() {
-    openKkiapayWidget({amount:"{{ total  }}",position:"right",callback:"/paiement/details-facture",
+    openKkiapayWidget({amount:"{{ total  }}",position:"right",callback:"commande/checkout",
                   data:"",
                   url:"{{ asset('uploads/images/app/logo-Jinukun-Store-transparent.png') }}",
                   theme:"green",

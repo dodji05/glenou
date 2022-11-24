@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="eyobu" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="eyobu" uploadOnCheckin="c358a2ed-7a0e-4164-9ff0-ed3f60733a6f" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="eyobu">
         <serverdata>
@@ -10,5 +10,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="eyobu" />
   </component>
 </project>

@@ -79,7 +79,7 @@ class CommandeController extends AbstractController
             $methodepaiement = $form->get('paiement')->getData();
             $adreesse = $form->get('adresse')->getData();
 
-            if($methodepaiement =='mobile'){
+            if($methodepaiement =='Mobile'){
                 return $this->redirectToRoute('commande_paiement_kkiapay');
             }
 
@@ -319,7 +319,7 @@ class CommandeController extends AbstractController
     public function kkiapay(SessionInterface $session)
     {
 
-        return $this->render('commmande/kkiapay.html.twig', [
+        return $this->render('commande/kkiapay.html.twig', [
             'total' => $session->get("montant"),
 
         ]);

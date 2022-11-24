@@ -29,14 +29,14 @@ class CommandeType extends AbstractType
                     'A la livraison' => 'PAL',
                     'Momo/Flooz' => 'Mobile',
                 ]
-              
+
                 ,
                 'multiple'=>false,
                 'expanded'=>true,
             ])
-            ->add('submit',SubmitType::class,[
-                'label'=>'Valider ma commande'
-            ])
+//            ->add('submit',SubmitType::class,[
+//                'label'=>'Valider ma commande'
+//            ])
         ;
     }
 
