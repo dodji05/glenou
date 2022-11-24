@@ -114,7 +114,9 @@
 $(document).ready(function() {
     // $('.select').niceSelect();
      $('.mobile').hide()
-    let $methode = document.getElementsByName('[name="commande[paiement]"]');
+  //  let $methode = document.getElementsByName('[name="commande[paiement]"]');
+    let $methode =  document.querySelectorAll('.btn-js');
+;
 console.log($methode)
       $methode.checked(function () {
           if( $methode.val()=='PAL'){
