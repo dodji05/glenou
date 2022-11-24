@@ -116,9 +116,12 @@ $(document).ready(function() {
      $('.mobile').hide()
     var $methode = document.getElementsByName("commande[paiement]");
 
-     if( $methode=='PAL'){
+      $methode.change(function () {
+          if( $methode.val()=='PAL'){
           $('.mobile').show()
      }
+     })
+
 });
 
 </script>
