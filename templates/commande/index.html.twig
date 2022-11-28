@@ -35,7 +35,7 @@
                         <div class="account-content">
                             {{ form_start(form,{action:path('commande_checkout')}) }}
                             {{ form_widget(form) }}
-                            <button type="button" class="mobile btn btn-success kkiapay-button btn-js"> Payer M
+                            <button type="button" class="mobile btn btn-success kkiapay-button btn-js"> Payer
 
                             </button>
                             <button type="submit" class="pal btn btn-primary btn-js"> Payer
@@ -113,18 +113,29 @@
 <script>
 $(document).ready(function() {
     // $('.select').niceSelect();
-     $('.mobile').hide()
+     $('.pal').hide()
   //  let $methode = document.getElementsByName('[name="commande[paiement]"]');
     let $methode =  document.querySelectorAll('.btn-js');
 ;
 console.log($methode)
-      $methode.checked(function () {
+ $methode.forEach(function() {
+     $methode.checked(function () {
           if( $methode.val()=='PAL'){
           $('.mobile').show()
      }
      })
+ })
+
 
 });
+// Attaching click event handlers to all radio buttons...
+$('input[type="radio"]').bind('click', function(){
+    // Processing only those that match the name attribute of the currently clicked button...
+    $('input[name="' + $(this).attr('name') + '"]').not($(this)).trigger('deselect'); // Every member of the current radio group except the clicked one...
+});
 
+$('input[type="radio"]').bind('deselect', function(){
+    console.log($(this));
+})
 </script>
 {% endblock %}
